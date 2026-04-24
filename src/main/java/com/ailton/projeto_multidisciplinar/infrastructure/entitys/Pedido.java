@@ -1,12 +1,19 @@
 package com.ailton.projeto_multidisciplinar.infrastructure.entitys;
 
 import com.ailton.projeto_multidisciplinar.infrastructure.entitys.enums.TipoCanalAtendimento;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.CreationTimestamp;
 
+
+import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -22,27 +29,39 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    //relação de muitos para um com a tabela USUARIO
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
-    private Usuario usuario;
-
     //Anotação de relação de muitos para muitos com a entity produto
-    @ManyToMany
-    @JoinTable(
-            name = "item_pedido",
-            joinColumns = @JoinColumn(name = "id_pedido"),
-            inverseJoinColumns = @JoinColumn(name = "id_produto")
-    )
-    private Set<Produto> produtos = new HashSet<>();
+    //@ManyToMany
+    // Como se tem uma coleção de ambos os lados necessita-se de uma tabela
+    //auxiliar para relacionar as duas entidades
+    //@JoinTable(
+            //nome da tabela auxiliar
+           // name = "item_pedido",
+            //defifnição da chave estrangeira de ambos os lados
+            //joinColumns = @JoinColumn(name = "pedido_id"),
+            //inverseJoinColumns = @JoinColumn(name = "produto_id")
+    //)
+    //private Set<Produto> produtos = new HashSet<>();
 
     //Este campo na tabela será do tipo Enum, com padrões já definidos de dados
     //Foi criado um pacote de enums dentro do pacote entitys e criado um arquido do tipo enum chamado TipoCanalAtendimento
     //que está a ser usado aqui.
+    //@Column mesmo colocando o nome = canalPedido, no banco de dados será criado o nome como canal_pedido.
     @Column(name = "canalPedido")
     @Enumerated(EnumType.STRING)
     private TipoCanalAtendimento canalPedido;
 
-    @Column(name = "dataPedido")
-    private LocalDate dataPedido;
+    @CreationTimestamp
+    @Column(name = "data_pedido")
+    private LocalDateTime dataPedido;
+
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ItemPedido> itens;
+
+
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //Relação de vários pedidos para um usuário
+    @ManyToOne//(fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 }

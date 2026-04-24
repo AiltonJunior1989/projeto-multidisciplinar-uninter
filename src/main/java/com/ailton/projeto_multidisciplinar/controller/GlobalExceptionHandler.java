@@ -1,6 +1,7 @@
 package com.ailton.projeto_multidisciplinar.controller;
 
 import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.Conflict;
+import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.NotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -22,5 +23,11 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<String> handleUnprocessableEntity(Exception e){
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro: " + e.getMessage());
+    }
+
+    @ExceptionHandler(NotFound.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<String> handleUnprocessableEntity(NotFound e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Erro: " + e.getMessage());
     }
 }

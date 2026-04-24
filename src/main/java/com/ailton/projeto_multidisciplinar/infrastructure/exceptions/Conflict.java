@@ -12,3 +12,4 @@ public class Conflict extends RuntimeException {
         super(message);
     }
 }
+
