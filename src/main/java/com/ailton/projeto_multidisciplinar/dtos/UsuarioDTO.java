@@ -1,6 +1,6 @@
 package com.ailton.projeto_multidisciplinar.dtos;
 
-public record UsuarioDTO(Integer id,
+public record UsuarioDTO(Long id,
                          String nome,
                          String telefone,
                          String cpf) {

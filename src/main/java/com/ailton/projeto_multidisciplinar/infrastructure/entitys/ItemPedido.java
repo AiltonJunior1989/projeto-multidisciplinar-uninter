@@ -1,6 +1,5 @@
 package com.ailton.projeto_multidisciplinar.infrastructure.entitys;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,8 +21,8 @@ public class ItemPedido {
 
     private Integer quantidade;
 
-    @Column(name = "preco_unitario", precision = 10, scale = 2)
-    private BigDecimal precoUnitario;
+    //@Column(name = "preco_unitario", precision = 10, scale = 2)
+    //private BigDecimal precoUnitario;
 
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     //Quando existir uma lista de muitos é uma boa prática criar como
@@ -31,10 +30,10 @@ public class ItemPedido {
     //de pedido e produto o que pode causar lentidão no sistema, só vai
     //carregar sobre demanda (quando precisar).
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pedido_id", nullable = false)
+    @JoinColumn(name = "pedido_id")//, nullable = false
     private Pedido pedido;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "produto_id", nullable = false)
     private Produto produto;

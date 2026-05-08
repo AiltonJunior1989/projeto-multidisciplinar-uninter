@@ -1,5 +1,6 @@
 package com.ailton.projeto_multidisciplinar.controller;
 
+import com.ailton.projeto_multidisciplinar.dtos.PedidoDTO;
 import com.ailton.projeto_multidisciplinar.infrastructure.entitys.Pedido;
 import com.ailton.projeto_multidisciplinar.infrastructure.entitys.enums.TipoCanalAtendimento;
 import com.ailton.projeto_multidisciplinar.service.PedidoService;
@@ -17,21 +18,20 @@ public class PedidoController {
     private final PedidoService pedidoService;
 
     @PostMapping
-    public ResponseEntity<Void> salvarPedido(@RequestBody Pedido pedido){
-        pedidoService.salvarPedido(pedido);
+    public ResponseEntity<Void> salvarPedido(@RequestBody PedidoDTO dto){
+        pedidoService.salvarPedido(dto);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<Pedido>> buscarPedidos(){
-        pedidoService.buscarPedidos();
-        List<Pedido> pedidos = pedidoService.buscarPedidos();
+    public ResponseEntity<List<PedidoDTO>> buscarPedidos(){
+        List<PedidoDTO> pedidos = pedidoService.buscarPedidos();
         return ResponseEntity.ok(pedidos);
     }
 
     @GetMapping(params = "canalPedido")
-    public ResponseEntity<List<Pedido>> buscarPedidosPorCanal(@RequestParam String canalPedido){
-        List<Pedido> pedidos = pedidoService.buscarPedidoPorCanal(canalPedido);
+    public ResponseEntity<List<PedidoDTO>> buscarPedidosPorCanal(@RequestParam String canalPedido){
+        List<PedidoDTO> pedidos = pedidoService.buscarPedidoPorCanal(canalPedido);
         return ResponseEntity.ok(pedidos);
     }
 }

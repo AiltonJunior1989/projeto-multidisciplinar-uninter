@@ -27,20 +27,7 @@ import java.util.Set;
 public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    //Anotação de relação de muitos para muitos com a entity produto
-    //@ManyToMany
-    // Como se tem uma coleção de ambos os lados necessita-se de uma tabela
-    //auxiliar para relacionar as duas entidades
-    //@JoinTable(
-            //nome da tabela auxiliar
-           // name = "item_pedido",
-            //defifnição da chave estrangeira de ambos os lados
-            //joinColumns = @JoinColumn(name = "pedido_id"),
-            //inverseJoinColumns = @JoinColumn(name = "produto_id")
-    //)
-    //private Set<Produto> produtos = new HashSet<>();
+    private Long id;
 
     //Este campo na tabela será do tipo Enum, com padrões já definidos de dados
     //Foi criado um pacote de enums dentro do pacote entitys e criado um arquido do tipo enum chamado TipoCanalAtendimento

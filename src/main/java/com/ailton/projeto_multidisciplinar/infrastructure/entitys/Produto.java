@@ -21,7 +21,7 @@ import java.util.Set;
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 
@@ -35,9 +35,4 @@ public class Produto {
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "produto", cascade = CascadeType.ALL)
     private List<ItemPedido> itens;
-
-
-
-
-
 }

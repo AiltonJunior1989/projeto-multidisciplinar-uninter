@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.client.HttpClientErrorException;
 
 //@ControllerAdvice - Permite o tratamento global de exceções
 @ControllerAdvice
@@ -29,5 +30,11 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<String> handleUnprocessableEntity(NotFound e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Erro: " + e.getMessage());
+    }
+
+    @ExceptionHandler(HttpClientErrorException.UnprocessableContent.class)
+    @ResponseStatus(HttpStatus.UNPROCESSABLE_CONTENT)
+    public ResponseEntity<String> handleUnprocessableEntity(UnsupportedClassVersionError e){
+        return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body("Erro: " + e.getMessage());
     }
 }

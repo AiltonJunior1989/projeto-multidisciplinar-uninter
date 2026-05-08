@@ -27,7 +27,6 @@ public class ProdutoService {
                         .precoUnitario(dto.precoUnitario())
                         .build();
 
-
         repository.saveAndFlush(produto);
     }
 

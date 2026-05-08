@@ -1,13 +1,13 @@
 package com.ailton.projeto_multidisciplinar.controller;
 
+import com.ailton.projeto_multidisciplinar.dtos.ItemPedidoDTO;
 import com.ailton.projeto_multidisciplinar.infrastructure.entitys.ItemPedido;
 import com.ailton.projeto_multidisciplinar.service.ItemPedidoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping ("/item")
@@ -16,8 +16,14 @@ public class ItemPedidoController {
     private final ItemPedidoService itemPedidoService;
 
     @PostMapping
-    ResponseEntity<Void> salvarItemPedido(@RequestBody ItemPedido pedido){
-        itemPedidoService.salvarItemPedido(pedido);
+    ResponseEntity<Void> salvarItemPedido(@RequestBody ItemPedidoDTO dto){
+        itemPedidoService.salvarItemPedido(dto);
         return ResponseEntity.ok().build();
     }
+
+    //@GetMapping
+    //ResponseEntity<List<ItemPedidoDTO>> buscarItemPedidos(){
+   //     List<ItemPedido> itens = itemPedidoService.buscarItemPedido();
+   //     return ResponseEntity.ok(itens);
+   // }
 }

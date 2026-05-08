@@ -21,10 +21,6 @@ public class UsuarioService {
     //void é o tipo de retorno
     // salvarUsuario é o nome do método
     //Usuario é o tipo do objeto e o usuario é o nome da variável a ser usada dentro do método
-
-
-
-
         public Usuario salvarUsuario(UsuarioDTO dto) {
 
             if(dto.cpf().isEmpty() || dto.nome().isEmpty() || dto.telefone().isEmpty()) {

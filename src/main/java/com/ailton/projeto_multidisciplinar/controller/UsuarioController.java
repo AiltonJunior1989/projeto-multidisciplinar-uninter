@@ -6,6 +6,7 @@ import com.ailton.projeto_multidisciplinar.infrastructure.entitys.Usuario;
 import com.ailton.projeto_multidisciplinar.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +22,7 @@ public class UsuarioController {
     public ResponseEntity<Void> salvarUsuario(@RequestBody UsuarioDTO dto){
 
         usuarioService.salvarUsuario(dto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @Operation(summary = "Busca todos os usuários", description = "Busca todos ususario")
