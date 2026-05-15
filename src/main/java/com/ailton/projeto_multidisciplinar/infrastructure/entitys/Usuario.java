@@ -53,11 +53,20 @@ public class Usuario implements UserDetails {
     private String password;
 
     @Column(name = "role")
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
     @CreationTimestamp
     @Column(name = "criado_em", nullable = false, updatable = false)
     private LocalDateTime criado_em;
+
+    public Usuario(String nome, String telefone, String cpf, String password, UserRole role){
+        this.nome = nome;
+        this.telefone = telefone;
+        this.cpf = cpf;
+        this.password = password;
+        this.role = role;
+    }
 
 
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

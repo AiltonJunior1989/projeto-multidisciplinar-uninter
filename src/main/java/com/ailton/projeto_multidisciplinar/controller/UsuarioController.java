@@ -32,9 +32,9 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarios);
     }
 
-    @Operation(summary = "Busca o usuário pelo CPF", description = "Busca o ususario pelo CPF")
-    @GetMapping(path = "/{cpf}",params = "cpf")
-    public ResponseEntity<Usuario> buscarUsuarioPorCpf(@RequestParam String cpf){
-        return ResponseEntity.ok(usuarioService.buscarUsuarioPorCpf(cpf));
-    }
+   // @Operation(summary = "Busca o usuário pelo CPF", description = "Busca o ususario pelo CPF")
+    //@GetMapping(path = "/{cpf}",params = "cpf")
+   // public ResponseEntity<Usuario> buscarUsuarioPorCpf(@RequestParam String cpf){
+   //     return ResponseEntity.ok(usuarioService.buscarUsuarioPorCpf(cpf));
+   // }
 }

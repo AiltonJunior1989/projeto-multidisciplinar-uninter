@@ -5,6 +5,7 @@ import com.ailton.projeto_multidisciplinar.infrastructure.entitys.Usuario;
 import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.Conflict;
 import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.NotFound;
 import com.ailton.projeto_multidisciplinar.infrastructure.repository.UsuarioRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,11 +28,11 @@ public class UsuarioService {
                 throw new Conflict("Preencha todos os campos para prosseguir.");
             }
 
-            repository.findByCpf(dto.cpf())
-                    .ifPresent(u -> {
-                                throw new Conflict("CPF já cadastrado!");
-                            }
-                    );
+            //repository.findByCpf(dto.cpf())
+            //        .ifPresent(u -> {
+           //                     throw new Conflict("CPF já cadastrado!");
+            //                }
+            //        );
 
             Usuario usuario = Usuario.builder()
                     .nome(dto.nome())
@@ -43,13 +44,13 @@ public class UsuarioService {
         }
 
 
-    public Usuario buscarUsuarioPorCpf(String cpf){
-        return repository.findByCpf(cpf).orElseThrow(
+    //public UserDetails buscarUsuarioPorCpf(String cpf){
+      //  return repository.findByCpf(cpf).orElseThrow(
                 //caso o cpf não seja encontrado será lançado um erro que será pego no GlobalExceptionHandler
                 //erro interno do servidor
-                () -> new NotFound("CPF não encontrado!")
-        );
-    }
+       //         () -> new NotFound("CPF não encontrado!")
+       // );
+   // }
 
     public List<UsuarioDTO> buscarTodosUsuarios() {
         return repository.findAll()
