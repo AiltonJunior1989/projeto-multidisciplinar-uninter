@@ -37,4 +37,10 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleUnprocessableEntity(UnsupportedClassVersionError e){
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body("Erro: " + e.getMessage());
     }
+
+    @ExceptionHandler(HttpClientErrorException.Forbidden.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseEntity<String> handleForbiddenEntity(UnsupportedClassVersionError e){
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Erro: " + e.getMessage());
+    }
 }

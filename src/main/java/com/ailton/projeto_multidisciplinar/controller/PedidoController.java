@@ -6,6 +6,7 @@ import com.ailton.projeto_multidisciplinar.infrastructure.entitys.enums.TipoCana
 import com.ailton.projeto_multidisciplinar.service.PedidoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class PedidoController {
     @PostMapping
     public ResponseEntity<Void> salvarPedido(@RequestBody PedidoDTO dto){
         pedidoService.salvarPedido(dto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping

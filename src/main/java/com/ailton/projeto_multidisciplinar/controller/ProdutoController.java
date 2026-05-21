@@ -4,6 +4,7 @@ import com.ailton.projeto_multidisciplinar.dtos.ProdutoDTO;
 import com.ailton.projeto_multidisciplinar.infrastructure.entitys.Produto;
 import com.ailton.projeto_multidisciplinar.service.ProdutoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<Void> salvarProduto(@RequestBody ProdutoDTO dto){
         produtoService.salvarProduto(dto);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
