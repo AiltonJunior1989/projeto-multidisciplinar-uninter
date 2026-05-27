@@ -30,7 +30,7 @@ public class Pedido {
     private Long id;
 
     //Este campo na tabela será do tipo Enum, com padrões já definidos de dados
-    //Foi criado um pacote de enums dentro do pacote entitys e criado um arquido do tipo enum chamado TipoCanalAtendimento
+    //Foi criado um pacote de enums dentro do pacote entitys e criado um arquivo do tipo enum chamado TipoCanalAtendimento
     //que está a ser usado aqui.
     //@Column mesmo colocando o nome = canalPedido, no banco de dados será criado o nome como canal_pedido.
     @Column(name = "canalPedido")

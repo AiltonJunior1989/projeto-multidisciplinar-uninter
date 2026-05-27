@@ -30,7 +30,17 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
+
+        if(data.cpf().isEmpty() || data.password().isEmpty()) {
+            throw new Conflict("Preencha todos os campos para prosseguir.");
+        }
+
+        if(data.cpf().length() != 11) {
+            throw new Conflict("CPF deve conter 11 números.");
+        }
+
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.cpf(), data.password());
+
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
         var token = tokenService.generateToken((Usuario) auth.getPrincipal());
@@ -40,6 +50,16 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid RegisterDTO data){
+
+        if(data.nome().isEmpty() || data.telefone().isEmpty() || data.cpf().isEmpty()
+                || data.password().isEmpty() || data.role().toString().isEmpty()) {
+            throw new Conflict("Preencha todos os campos para prosseguir.");
+        }
+
+        if(data.cpf().length() != 11) {
+            throw new Conflict("CPF deve conter 11 números.");
+        }
+
         if(repository.findByCpf(data.cpf()) != null){
            // return ResponseEntity.badRequest().build();
             throw new Conflict("Usuário já cadastrado.");

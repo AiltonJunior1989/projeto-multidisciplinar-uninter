@@ -28,12 +28,6 @@ public class UsuarioService {
                 throw new Conflict("Preencha todos os campos para prosseguir.");
             }
 
-            //repository.findByCpf(dto.cpf())
-            //        .ifPresent(u -> {
-           //                     throw new Conflict("CPF já cadastrado!");
-            //                }
-            //        );
-
             Usuario usuario = Usuario.builder()
                     .nome(dto.nome())
                     .telefone(dto.telefone())
@@ -42,15 +36,6 @@ public class UsuarioService {
 
             return repository.saveAndFlush(usuario);
         }
-
-
-    //public UserDetails buscarUsuarioPorCpf(String cpf){
-      //  return repository.findByCpf(cpf).orElseThrow(
-                //caso o cpf não seja encontrado será lançado um erro que será pego no GlobalExceptionHandler
-                //erro interno do servidor
-       //         () -> new NotFound("CPF não encontrado!")
-       // );
-   // }
 
     public List<UsuarioDTO> buscarTodosUsuarios() {
         return repository.findAll()

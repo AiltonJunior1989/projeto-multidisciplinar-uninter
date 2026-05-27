@@ -4,6 +4,8 @@ import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.Conflict;
 import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.NotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -38,9 +40,9 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.UNPROCESSABLE_CONTENT).body("Erro: " + e.getMessage());
     }
 
-    @ExceptionHandler(HttpClientErrorException.Forbidden.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
-    public ResponseEntity<String> handleForbiddenEntity(UnsupportedClassVersionError e){
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Erro: " + e.getMessage());
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<String> handleAuthException(AuthenticationException e){
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body("Erro: " + e.getMessage());
     }
 }

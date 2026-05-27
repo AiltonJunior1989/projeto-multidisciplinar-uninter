@@ -43,12 +43,4 @@ public class ItemPedidoService {
 
             return itemPedidoRepository.save(itemPedido);
         }
-
-    //public List<ItemPedidoDTO> buscarItemPedido() {
-       //return itemPedidoRepository.findAll()
-       //        .stream()
-       //        .map(item -> new ItemPedidoDTO(
-       //                item.getId(),
-       //                item.getQuantidade()
-       //        )).toList();}
 }

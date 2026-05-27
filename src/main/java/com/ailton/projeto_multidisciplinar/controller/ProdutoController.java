@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/produto")
+@RequestMapping("/produtos")
 @RequiredArgsConstructor
 public class ProdutoController {
     private final ProdutoService produtoService;
@@ -26,5 +26,12 @@ public class ProdutoController {
     public ResponseEntity<List<ProdutoDTO>> buscarTodosProdutos() {
         List<ProdutoDTO> produtos = produtoService.buscarTodosProdutos();
         return ResponseEntity.ok(produtos);
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> atualizarProduto(@RequestParam Long id,
+                                                 @RequestBody ProdutoDTO produto){
+        produtoService.atualizarProduto(id, produto);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }

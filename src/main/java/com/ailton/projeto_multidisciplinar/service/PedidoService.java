@@ -62,7 +62,8 @@ public class PedidoService {
                                         item.getQuantidade()
                                 ))
                                 .toList(),
-                        pedido.getUsuario().getId()
+                        pedido.getUsuario().getId(),
+                        pedido.getDataPedido()
                 ))
                 .toList();
     }
@@ -85,7 +86,8 @@ public class PedidoService {
                                         item.getQuantidade()
                                 ))
                                 .toList(),
-                        pedido.getUsuario().getId()
+                        pedido.getUsuario().getId(),
+                        pedido.getDataPedido()
                 ))
                 .toList();
     }

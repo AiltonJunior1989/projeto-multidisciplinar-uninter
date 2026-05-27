@@ -2,10 +2,12 @@ package com.ailton.projeto_multidisciplinar.dtos;
 
 import com.ailton.projeto_multidisciplinar.infrastructure.entitys.enums.TipoCanalAtendimento;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public record PedidoDTO(Long id,
                         TipoCanalAtendimento canalPedido,
                         List<ItemPedidoDTO> itens,
-                        Long usuarioId) {
+                        Long usuarioId,
+                        LocalDateTime dataPedido) {
 }

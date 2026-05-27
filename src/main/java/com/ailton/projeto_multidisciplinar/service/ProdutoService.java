@@ -39,4 +39,19 @@ public class ProdutoService {
                         produto.getPrecoUnitario()
                 ))
                 .toList();}
+
+    public void atualizarProduto(Long id, ProdutoDTO produto){
+        Produto produtoEntity = repository.findById(id).orElseThrow(
+                () -> new RuntimeException("Produto não encontrado")
+        );
+
+        Produto produtoAtualizado = Produto.builder()
+                .nome(produto.nome() != null ?
+                        produto.nome() : produtoEntity.getNome())
+                .precoUnitario(produto.precoUnitario() != null ?
+                        produto.precoUnitario() : produtoEntity.getPrecoUnitario())
+                .id(produtoEntity.getId())
+                .build();
+        repository.save(produtoAtualizado);
+    }
 }
