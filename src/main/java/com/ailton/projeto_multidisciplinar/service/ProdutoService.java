@@ -3,6 +3,7 @@ package com.ailton.projeto_multidisciplinar.service;
 import com.ailton.projeto_multidisciplinar.dtos.ProdutoDTO;
 import com.ailton.projeto_multidisciplinar.infrastructure.entitys.Produto;
 import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.Conflict;
+import com.ailton.projeto_multidisciplinar.infrastructure.exceptions.NotFound;
 import com.ailton.projeto_multidisciplinar.infrastructure.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
 
@@ -53,5 +54,15 @@ public class ProdutoService {
                 .id(produtoEntity.getId())
                 .build();
         repository.save(produtoAtualizado);
+    }
+
+    public void deletarProduto(Long id) {
+
+        Produto produto = repository.findById(id)
+                .orElseThrow(
+                        () -> new NotFound("Produto não encontrado")
+                );
+
+        repository.deleteById(produto.getId());
     }
 }

@@ -64,6 +64,7 @@ public class AuthenticationController {
            // return ResponseEntity.badRequest().build();
             throw new Conflict("Usuário já cadastrado.");
         }
+
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
         Usuario newUser = new Usuario(data.nome(), data.telefone(),data.cpf(), encryptedPassword, data.role());
 
