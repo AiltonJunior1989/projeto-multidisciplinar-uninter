@@ -26,10 +26,6 @@ public class SecurityConfigurations {
         this.securityFilter = securityFilter;
     }
 
-    //public SecurityConfigurations(SecurityFilter securityFilter) {
-        //his.securityFilter = securityFilter;
-    //}
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity){
         return httpSecurity
