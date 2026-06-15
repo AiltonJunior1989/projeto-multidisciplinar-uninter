@@ -68,6 +68,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    insert into usuario values (1, "08975642398", "2026-05-28", "admin", "$2a$10$ieNhyVEhWjIPFM8fU57oUO2ylZgo0K1.lNkaoFjqgjRK0IgXtrgtO", "ADMIN", "35999856748");
    ```
 2. Após o primeiro usuário cadastrado deve efetuar o login e obter o token (usuários devem estar logados para efetuar as requisições).
+   
    Endpoint:
    ```bash
    POST /auth/login
@@ -129,7 +130,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    ```
     Imagem do teste:
      <img width="1366" height="727" alt="image" src="https://github.com/user-attachments/assets/b08305c1-1307-4034-b75f-146151b4ec40" />
-6. Atualizar produto.
+5. Atualizar produto.
    
    Endpoint:
    ```bash
@@ -151,7 +152,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
     Imagem do teste:
    <img width="1366" height="729" alt="image" src="https://github.com/user-attachments/assets/b18f9816-dd24-4852-84b5-07bc95a51fd4" />
    Para verificar a atualização pode ir no endpoint de "Obter todos os produtos" e visualizar o produto que foi alterado.
-7. Deletar produto.
+6. Deletar produto.
    
    Endpoint:
    ```bash
@@ -171,7 +172,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    ```
     Imagem do teste:
    <img width="1366" height="731" alt="image" src="https://github.com/user-attachments/assets/cbfd5ce9-e3e9-4fea-aae1-84a6eb3d59eb" />
-   7. Criar pedido.
+7. Criar pedido.
    
    Endpoint:
    ```bash
@@ -194,7 +195,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    <img width="1366" height="731" alt="image" src="https://github.com/user-attachments/assets/c5fef218-3cea-4495-aaaf-8379623a6157" />
    Obs.: Vamos criar 2 pedidos para testar a rota de "Buscar por Unidade" logo abaixo, envie o mesmo JSON mudando somente a variável "canalPedido" com o valor "APP" por exemplo.
 
-   8. Colocando ítem nos pedidos.
+8. Colocando ítem nos pedidos.
    
    Endpoint:
    ```bash
@@ -221,7 +222,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
 
    	OBS.: ATENTE A COLOCAR PELO MENOS UM ÍTEM NO OUTRO PEDIDO QUE FOI CRIADO PARA CONSULTAR A ROTA DE "PEDIDOS POR UNIDADE" LOGO ABAIXO.
 
-   9. Consultando pedidos por unidade.
+9. Consultando pedidos por unidade.
    
    Endpoint:
    ```bash
@@ -241,18 +242,5 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    ```
    Imagem do teste:
    <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/d4987a4d-8350-41c3-b868-0a02466f9b30" />
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
