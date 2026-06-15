@@ -113,6 +113,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
 
     Obs.: Repita o teste mudando os dados de envio do JSON para criar outro produto.
 4. Obter todos produtos cadastrados.
+   
    Endpoint:
    ```bash
    GET /produtos
@@ -128,7 +129,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    ```
     Imagem do teste:
      <img width="1366" height="727" alt="image" src="https://github.com/user-attachments/assets/b08305c1-1307-4034-b75f-146151b4ec40" />
-5. Atualizar produto.
+6. Atualizar produto.
    
    Endpoint:
    ```bash
@@ -150,7 +151,7 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
     Imagem do teste:
    <img width="1366" height="729" alt="image" src="https://github.com/user-attachments/assets/b18f9816-dd24-4852-84b5-07bc95a51fd4" />
    Para verificar a atualização pode ir no endpoint de "Obter todos os produtos" e visualizar o produto que foi alterado.
-6. Deletar produto.
+7. Deletar produto.
    
    Endpoint:
    ```bash
@@ -170,6 +171,80 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    ```
     Imagem do teste:
    <img width="1366" height="731" alt="image" src="https://github.com/user-attachments/assets/cbfd5ce9-e3e9-4fea-aae1-84a6eb3d59eb" />
+   7. Criar pedido.
+   
+   Endpoint:
+   ```bash
+   POST /pedidos
+   ```
+
+   Pasta Insomnia:
+   ```bash
+   Pedido/Salvar pedido
+   ```
+   JSON para envio:
+   ```bash
+  	{
+  	"usuarioId": 1,
+  	"canalPedido": "WEB",
+  	"itens": []
+	}
+   ```
+   Imagem do teste:
+   <img width="1366" height="731" alt="image" src="https://github.com/user-attachments/assets/c5fef218-3cea-4495-aaaf-8379623a6157" />
+   Obs.: Vamos criar 2 pedidos para testar a rota de "Buscar por Unidade" logo abaixo, envie o mesmo JSON mudando somente a variável "canalPedido" com o valor "APP" por exemplo.
+
+   8. Colocando ítem nos pedidos.
+   
+   Endpoint:
+   ```bash
+   POST /item
+   ```
+
+   Pasta Insomnia:
+   ```bash
+   Itens/Salvar item
+   ```
+
+	OBS.: ANTES DE CRIAR OS ÍTENS NOS PEDIDOS PODE-SE TESTAR TAMBÉM A ROTA "BUSCAR PEDIDOS" NA PASTA DO INSOMNIA CAMINHO -> PEDIDOS -> BUSCAR PEDIDOS, PARA CONSULTAR OS ID'S QUE SERÃO COLOCADOS NA VARIÁVEL "PEDIDOID" E CONSSULTAR TAMBÉM OS ID'S DOS PRODUTOS CADASTRADOS EM PRODUTOS -> OBTER TODOS PRODUTOS E COLOCAR NA VARIÁVEL PRODUTOID.
+   
+   JSON para envio:
+   ```bash
+  	{
+    "quantidade": 2,
+    "produtoId": 52,
+    "pedidoId": 1
+	}
+   ```
+   Imagem do teste:
+   <img width="1366" height="729" alt="image" src="https://github.com/user-attachments/assets/516a96af-5636-40ff-a6c8-bf0c7112056e" />
+
+   	OBS.: ATENTE A COLOCAR PELO MENOS UM ÍTEM NO OUTRO PEDIDO QUE FOI CRIADO PARA CONSULTAR A ROTA DE "PEDIDOS POR UNIDADE" LOGO ABAIXO.
+
+   9. Consultando pedidos por unidade.
+   
+   Endpoint:
+   ```bash
+   GET /pedidos?canalPedido={}
+   ```
+   Pasta Insomnia:
+   ```bash
+   Pedidos/Buscar pedidos por unidade
+   ```
+      OBS.: EM "Params -> Add = adicione a variável e o valor como na imagem abaixo:
+   <img width="410" height="565" alt="image" src="https://github.com/user-attachments/assets/ee6b4c31-32d9-4759-82c3-7557cf2a5678" />
+   
+   JSON para envio:
+   ```bash
+  	{
+	}
+   ```
+   Imagem do teste:
+   <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/d4987a4d-8350-41c3-b868-0a02466f9b30" />
+
+
+
+
 
 
 
