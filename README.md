@@ -243,4 +243,72 @@ Para realização dos testes foi utilizado o Insomnia com a organização do pro
    Imagem do teste:
    <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/d4987a4d-8350-41c3-b868-0a02466f9b30" />
 
+10. Salvando usuário.
+   
+   Endpoint:
+   ```bash
+   POST /usuarios
+   ```
+   Pasta Insomnia:
+   ```bash
+   Auth/Salvar usuarios
+   ```
+   
+   JSON para envio:
+   ```bash
+  	{
+	"nome": "Ailton",
+	"telefone": "35990784567",
+	"cpf": "08975642312",
+	"password": "1234",
+	"role": "USER"
+	}
+   ```
+   Imagem do teste:
+   <img width="1366" height="730" alt="image" src="https://github.com/user-attachments/assets/36d5ca34-2e1a-4f87-b87f-e55426ac65e1" />
+11. Obtendo todos usuários
+
+ Endpoint:
+   ```bash
+   GET /usuarios
+   ```
+   Pasta Insomnia:
+   ```bash
+   Auth/Obtem todos os usuarios
+   ```
+   
+   JSON para envio:
+   ```bash
+  	{
+	}
+   ```
+   Imagem do teste:
+   <img width="1366" height="728" alt="image" src="https://github.com/user-attachments/assets/1bc1afa7-0b02-443c-b641-4139ef16ac23" />
+
+12.Tentando obter todos usuários com role USER.
+
+Endpoint:
+   ```bash
+   GET /usuarios
+   ```
+   Pasta Insomnia:
+   ```bash
+   Auth/Obtem todos os usuarios
+   ```
+   
+   JSON para envio:
+   ```bash
+  	{
+	}
+   ```
+OBS.: ANTES DE REALIZAR ESTE TESTE FAÇA O LOGIN COM O USUÁRIO CRIADO COM ROLE USER, NÃO ESQUEÇA DE UTILIZAR O TOKEN GERADO 		PARA O TESTE.
+
+   Imagem do teste:
+   
+   <img width="1365" height="730" alt="image" src="https://github.com/user-attachments/assets/4500689d-7474-40f7-af83-de04eb5d875e" />
+
+
+
+   
+
 
