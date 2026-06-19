@@ -56,10 +56,24 @@ server.port = 8081
 api.security.token.secret=${JWT_SECRET:my-secret-key}
 ```
 
+# Arquivo contendo a coleção para os testes no Insomnia
+
+### Link para download do Insomnia -> https://insomnia.rest/download
+
+O arquivo está na raiz do projeto em formato .yaml com o nome Insomnia_2026-06-19.yaml.
+
+Para abrir a coleção no Insomnia primeiro deve-se criar um projeto conforme imagem abaixo:
+
+<img width="1366" height="730" alt="image" src="https://github.com/user-attachments/assets/9c39bb67-50da-4c28-9c1d-3fee803e96f6" />
+
+Abra a pasta onde foi baixada do GitHub arraste o arquivo Insomnia_2026-06-19.yaml para o local mostrado na imagem abaixo e clique em Scan:
+
+<img width="1366" height="730" alt="image" src="https://github.com/user-attachments/assets/22a42a76-71be-4e77-8be2-f5e09f989572" />
+
 # Iniciando os testes 🚀
 Para realização dos testes foi utilizado o Insomnia com a organização do projeto em pastas como na imagem abaixo:
 <img width="283" height="162" alt="image" src="https://github.com/user-attachments/assets/db7fa2eb-762e-4154-86a5-283153827d59" />
-### Link para download do Insomnia -> https://insomnia.rest/download
+
 
 1. O primeiro usuário deve ser criado diretamente no banco de dados devido somente usuários com rule ADMIN conseguirem criar.
    
